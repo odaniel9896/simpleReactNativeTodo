@@ -49,10 +49,6 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     if (imageResponse && imageResponse.didCancel !== true) {
-      console.log(
-        '🚀 ~ file: index.tsx ~ line 46 ~ useEffect ~ imageResponse',
-        imageResponse,
-      );
       setImage(imageResponse.assets[0].uri);
     }
   }, [imageResponse]);

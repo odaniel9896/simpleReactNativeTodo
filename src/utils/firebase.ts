@@ -26,8 +26,7 @@ export async function updateFirebaseData(params: UserRepository) {
     .update(params)
     .then(() => {
       console.log('user updated');
-    })
-    .catch(error => console.log(error));
+    });
 }
 
 export async function storageInFirebase(uri: string): Promise<string> {
