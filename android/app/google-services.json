@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888494870386",
+    "project_id": "simpleuserregister",
+    "storage_bucket": "simpleuserregister.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888494870386:android:ff7b10fbd959c7a34d97eb",
+        "android_client_info": {
+          "package_name": "com.simpleuserregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888494870386-5kp1fl40i9c0ntjhvug1hs2mjhcgjobs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLTWsUZC4mQqlCgcVNI6VaCFzKBYYbDns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888494870386-5kp1fl40i9c0ntjhvug1hs2mjhcgjobs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
