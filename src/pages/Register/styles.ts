@@ -27,3 +27,18 @@ export const ImageView = styled.Image`
   height: 200px;
   align-self: center;
 `;
+
+export const ContainerData = styled.View`
+  width: 90%;
+  align-self: center;
+  height: 60px;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+`;
+
+export const DataText = styled.Text`
+  font-size: 20px;
+  color: black;
+  margin-left: 15px;
+`;

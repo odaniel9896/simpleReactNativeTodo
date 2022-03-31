@@ -12,8 +12,10 @@ import {
   ButtonAddUser,
   TextAdd,
   Loading,
+  NotUsersFound,
 } from './styles';
 import {UserRepository} from '../../entities/user';
+import Toast from 'react-native-toast-message';
 
 type Navigation = {
   navigation: any;
@@ -21,16 +23,24 @@ type Navigation = {
 
 const Home: React.FC<Navigation> = ({navigation}) => {
   const [users, setUsers] = useState<UserRepository[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleEditUser = () => {
-    navigation.navigate('Register');
+  const handleEditUser = (params: UserRepository) => {
+    navigation.navigate('Register', params);
   };
 
   const handleDeleteUser = (id: string) => {
     removeFirebaseData(id);
+    Toast.show({
+      type: 'success',
+      text1: 'Usuário Deletado',
+      position: 'bottom',
+      visibilityTime: 2000,
+    });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const subscriber = firestore()
       .collection('users')
       .onSnapshot(query => {
@@ -42,6 +52,7 @@ const Home: React.FC<Navigation> = ({navigation}) => {
           });
         });
         setUsers(response);
+        setIsLoading(false);
       });
     return () => subscriber();
   }, []);
@@ -50,8 +61,9 @@ const Home: React.FC<Navigation> = ({navigation}) => {
     <Container>
       {users.length ? (
         <FlatList
-          data={users}
-          keyExtractor={item => item.id}
+          data={users.sort((ascend, descend) =>
+            ascend.name.localeCompare(descend.name),
+          )}
           renderItem={({item}) => {
             return (
               <CardUser>
@@ -87,15 +99,19 @@ const Home: React.FC<Navigation> = ({navigation}) => {
                     size={30}
                     color={'black'}
                     style={{marginLeft: 15}}
-                    onPress={() => handleEditUser()}
+                    onPress={() => handleEditUser(item)}
                   />
                 </OptionsContainer>
               </CardUser>
             );
           }}
         />
-      ) : (
+      ) : isLoading ? (
         <Loading size={90} color="black" />
+      ) : (
+        <NotUsersFound>
+          Nenhum usuário encontrado. Cadastre algum.
+        </NotUsersFound>
       )}
 
       <ButtonAddUser onPress={() => navigation.navigate('Register')}>

@@ -57,4 +57,13 @@ export const TextAdd = styled.Text`
 
 export const Loading = styled.ActivityIndicator`
   margin: auto auto;
+  z-index: 999;
+`;
+
+export const NotUsersFound = styled.Text`
+  margin: auto auto;
+  font-size: 20px;
+  width: 80%;
+  text-align: center;
+  font-weight: bold;
 `;
